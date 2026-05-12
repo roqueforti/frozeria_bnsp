@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frozeria - Sistem Manajemen Stok Opname
 
-## Getting Started
+Dokumentasi lengkap mengenai aplikasi Frozeria, yang dibangun untuk memenuhi tugas ujian praktek sertifikasi BNSP 2026.
 
-First, run the development server:
+## 🚀 Teknologi yang Digunakan
 
+Aplikasi ini dibangun menggunakan teknologi modern berbasis full-stack JavaScript/TypeScript:
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) - Framework React untuk produksi.
+- **Bahasa Pemrograman**: [TypeScript](https://www.typescriptlang.org/) - Memberikan keamanan tipe data.
+- **Database**: [PostgreSQL](https://www.postgresql.org/) - Database relasional untuk menyimpan data produk dan kategori.
+- **ORM**: [Prisma](https://www.prisma.io/) - Memudahkan interaksi dengan database menggunakan TypeScript.
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) - Framework CSS berbasis utilitas untuk desain kustom yang cepat.
+- **Icons**: [Lucide React](https://lucide.dev/) - Set icon yang bersih dan konsisten.
+
+## ✨ Fitur Utama
+
+Aplikasi ini memiliki fitur lengkap sesuai dengan permintaan soal ujian:
+
+1. **Dashboard**: Menampilkan ringkasan statistik (Total Barang, Stok Rendah, Total Kategori) dan tabel daftar barang.
+2. **Pencarian & Filter**: Cari barang berdasarkan nama (tekan Enter atau klik 'Cari') dan filter berdasarkan kategori.
+3. **Manajemen Produk (CRUD)**:
+   * Tambah barang baru dengan upload foto.
+   * Edit informasi barang dan update stok.
+   * Lihat detail barang lengkap dengan foto.
+   * Hapus barang dengan modal konfirmasi.
+4. **Manajemen Kategori**: Tambah, edit, dan hapus kategori produk.
+5. **Halaman Bantuan**: Panduan penggunaan sistem bagi staf dan informasi pengembang.
+
+## 🎨 Desain Sistem
+
+Aplikasi ini menggunakan tema **"Ice Fresh"** dengan dominasi warna putih, abu-abu lembut, dan aksen Indigo/Biru. Desainnya dibuat premium dengan sentuhan:
+- **Glow Effects**: Pendaran warna lembut di pojok card untuk indikator visual.
+- **Micro-animations**: Efek melayang (`hover:-translate-y-1`) dan transisi halus pada tombol dan card.
+- **Responsive Layout**: Tampilan yang rapi di berbagai ukuran layar.
+
+## 🛠️ Cara Menjalankan Project
+
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
+
+### 1. Prasyarat
+- Node.js versi 18 atau lebih baru.
+- Database PostgreSQL yang sedang berjalan.
+
+### 2. Instalasi
+Clone repository ini atau ekstrak folder project, lalu jalankan:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Konfigurasi Environment
+Buat file `.env` di root project (jika belum ada) dan sesuaikan URL koneksi database Anda:
+```env
+DATABASE_URL="postgresql://postgres:password123@localhost:5432/frozeria_db?schema=public"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Sinkronisasi Database
+Jalankan perintah berikut untuk membuat tabel di database Anda berdasarkan skema Prisma:
+```bash
+npx prisma db push
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Jalankan Server Development
+Jalankan perintah berikut untuk memulai server lokal:
+```bash
+npm run dev
+```
+Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Dibuat untuk Asesmen Sertikom BNSP DIPA 2026 - Politeknik Negeri Malang*

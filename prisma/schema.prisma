@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id          String    @id @default(uuid()) @db.Uuid
+  name        String    @db.VarChar(100)
+  description String?   @db.Text
+  createdAt   DateTime  @default(now()) @map("created_at")
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id              String    @id @default(uuid()) @db.Uuid
+  categoryId      String?   @map("category_id") @db.Uuid
+  name            String    @db.VarChar(200)
+  photoUrl        String?   @map("photo_url") @db.Text
+  stock           Int       @default(0)
+  minStock        Int       @default(20) @map("min_stock")
+  unit            String    @default("pcs") @db.VarChar(50)
+  sellPrice       Decimal   @default(0.00) @map("sell_price") @db.Decimal(12, 2)
+  buyPrice        Decimal   @default(0.00) @map("buy_price") @db.Decimal(12, 2)
+  weightSize      String?   @map("weight_size") @db.VarChar(100)
+  storageLocation String?   @map("storage_location") @db.VarChar(100)
+  description     String?   @db.Text
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  category        Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@map("products")
+}
